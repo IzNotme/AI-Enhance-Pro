@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Enhance Pro - Video Enhancer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>AI Enhance Pro</h2>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <div class="upload-section glass-card">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <h3 id="uploadTitle">Drop your video here or click to browse</h3>
+                <p>Supports MP4, MOV, AVI (up to 500MB)</p>
+                <input type="file" id="videoInput" accept="video/*" hidden>
+                <button class="browse-btn" onclick="document.getElementById('videoInput').click()">Browse Files</button>
+            </div>
+            <div class="file-info" id="fileInfo" style="display: none;">
+                <span id="fileName"></span>
+                <button class="clear-btn" onclick="clearFile()">Clear</button>
+            </div>
+        </div>
+
+        <div class="controls-section glass-card">
+            <h3>Enhancement Settings</h3>
+            <div class="control-group">
+                <label>Resolution</label>
+                <select id="resolution">
+                    <option value="720p">720p</option>
+                    <option value="1080p" selected>1080p</option>
+                    <option value="4k">4K</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Sharpness</label>
+                <input type="range" id="sharpness" min="0" max="100" value="50">
+                <span id="sharpnessValue">50%</span>
+            </div>
+            <div class="control-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="noiseReduction">
+                    <span class="checkmark"></span>
+                    Noise Reduction
+                </label>
+            </div>
+            <div class="control-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="fpsBoost" checked>
+                    <span class="checkmark"></span>
+                    FPS Boost (60→120fps)
+                </label>
+            </div>
+        </div>
+
+        <div class="enhance-section glass-card">
+            <button class="enhance-btn" id="enhanceBtn" onclick="startEnhance()">
+                🚀 Enhance with AI
+            </button>
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">Preparing AI model...</p>
+            </div>
+            <div class="status" id="status"></div>
+        </div>
+
+        <div class="preview-section glass-card">
+            <h3>Preview</h3>
+            <div class="video-container">
+                <video id="previewVideo" controls style="display: none;"></video>
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <div class="placeholder-icon">🎥</div>
+                    <p>Enhanced video will appear here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AI Enhance Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
